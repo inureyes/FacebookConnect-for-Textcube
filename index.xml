@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin version="1.0">
+  <title xml:lang="en">Facebook Connect</title>
+  <title xml:lang="ko">페이스북 연결</title>
+  <link>http://www.needlworks.org/</link>
+  <version>4.0</version>
+  <description xml:lang="en">Adds like button on each post.</description>
+  <description xml:lang="ko">페이스북 like 버튼을 각 글에 붙여줍니다.</description>
+  <license>GPL</license>
+  <author xml:lang="en" link="http://forest.nubimaru.com">Jeongkyu Shin</author>
+  <author xml:lang="ko" link="http://forest.nubimaru.com"><![CDATA[신정규]]></author>
+  <safety changeData="no" exposeData="no" accessLocal="no" accessRemote="no" accessRaw="yes" />
+  <requirements>
+    <textcube>1.10</textcube>
+  </requirements>
+  <binding>
+    <tag name="SKIN_body_end" handler="FacebookConnect_addHeader" />
+    <tag name="SKIN_body_start" handler="FacebookConnect_addFBJSAPI" />
+    <listener event="ViewPostContent" handler="FacebookConnect_addButton">FacebookConnect_addButton</listener>
+    <config xml:lang="ko" dataValHandler="FacebookConnect_handleconfig">
+	  <window width="500" height="475" />
+	  <fieldset legend="출력 설정">
+	    <field title="디자인" type="select" name="Layout">
+		  <op value="standard" checked="checked"><![CDATA[standard]]></op>
+		  <op value="button_count"><![CDATA[button_count]]></op>
+		</field>
+	    <field title="얼굴" type="checkbox" name="Faces">
+          <op name="Show" value="1" checked="checked"><![CDATA[ 버튼 아래에 추천한 사람들의 얼글을 보여줍니다.]]></op>
+		</field>
+	    <field title="너비" type="text" name="Width" value="450" />
+	    <field title="맞춤" type="checkbox" name="Adjust">
+          <op name="AdjustWidth" value="1" checked="checked"><![CDATA[ 사용 중인 스킨의 본문 가로폭에 자동으로 폭을 맞춰 조정합니다.]]></op>
+       </field>
+	    <field title="버튼 단어" type="select" name="VerbToDisplay">
+		  <op value="like" checked="checked"><![CDATA[좋아요]]></op>
+		  <op value="recommend"><![CDATA[추천]]></op>
+		</field>
+	    <field title="색상" type="select" name="ColorScheme">
+		  <op value="light" checked="checked"><![CDATA[밝은 색상]]></op>
+		  <op value="dark"><![CDATA[어두운 색상]]></op>
+		</field>
+	    <field title="미리보기" type="checkbox" name="Thumbnail">
+          <op name="Show" value="1" checked="checked"><![CDATA[페이스북에 추가될 때 보여지는 미리보기 그림을 각 글의 첫 그림으로 지정합니다.]]></op>
+		</field>
+	  </fieldset>
+	  <fieldset legend="페이스북 댓글 사용">
+	    <field title="댓글 사용" type="checkbox" name="useComment">
+          <op name="useComment" value="1" checked="checked"><![CDATA[페이스북 댓글을 사용합니다.]]></op>
+		</field>
+	    <field title="기본 댓글 수" type="text" name="NumPosts" value="2" />
+	  </fieldset>
+	</config>
+    <config xml:lang="en" dataValHandler="FacebookConnect_handleconfig">
+	  <window width="500" height="475" />
+	  <fieldset legend="Settings">
+	    <field title="Layout" type="select" name="Layout">
+		  <op value="standard" checked="checked"><![CDATA[standard]]></op>
+		  <op value="button_count"><![CDATA[button_count]]></op>
+		</field>
+	    <field title="Faces" type="checkbox" name="Faces">
+          <op name="Show" value="1" checked="checked"><![CDATA[ Show profile pictures below button.]]></op>
+		</field>
+	    <field title="Width" type="text" name="Width" value="450" />
+	    <field title="Align" type="checkbox" name="Adjust">
+          <op name="AdjustWidth" value="1" checked="checked"><![CDATA[ Automatically adjust width to current skin.]]></op>
+       </field>
+	    <field title="Verb to display" type="select" name="VerbToDisplay">
+		  <op value="like" checked="checked"><![CDATA[Like]]></op>
+		  <op value="recommend"><![CDATA[Recomend]]></op>
+		</field>
+	    <field title="Color Scheme" type="select" name="ColorScheme">
+		  <op value="light" checked="checked"><![CDATA[Light]]></op>
+		  <op value="dark"><![CDATA[Dark]]></op>
+		</field>
+	    <field title="Preview" type="checkbox" name="Thumbnail">
+          <op name="Show" value="1" checked="checked"><![CDATA[Use the first photo as a facebook thumbnail.]]></op>
+		</field>
+	  </fieldset>
+	  <fieldset legend="Use Facebook comment">
+	    <field title="Use Facebook comment" type="checkbox" name="useComment">
+          <op name="useComment" value="1" checked="checked"><![CDATA[Enable facebook comments.]]></op>
+		</field>
+	    <field title="Number of posts" type="text" name="NumPosts" value="2" />
+	  </fieldset>
+	</config>
+  </binding>
+</plugin>
