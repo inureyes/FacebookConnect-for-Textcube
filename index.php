@@ -23,7 +23,7 @@
 
 */
 function FacebookConnect_addHeader($target) {
-	global $blog, $pageTitle,$entries,$defaultURL, $configVal;
+	global $pageTitle, $entries, $configVal;
 	$context = Model_Context::getInstance();
 	if(count($entries) == 1) {
 		$config = Setting::fetchConfigVal($configVal);
@@ -31,7 +31,7 @@ function FacebookConnect_addHeader($target) {
 		else $config['Thumbnail'] = false;
 		$target .= '
 	<meta property="og:title" content="'.htmlspecialchars(trim($pageTitle)).'"/>
-	<meta property="og:site_name" content="'.htmlspecialchars(trim($blog['title'])).'"/>
+	<meta property="og:site_name" content="'.htmlspecialchars(trim($context->getProperty('blog.title'))).'"/>
 		';
 //	<meta property="og:image" content=""/>
 		if($config['Thumbnail'] == true) {
