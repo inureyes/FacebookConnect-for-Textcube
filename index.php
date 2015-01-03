@@ -105,7 +105,6 @@ function FacebookConnect_getAttachmentExtract($content){
 }
 
 function FacebookConnect_handleconfig($data) {
-	//var_dump($data);
 	return true;	// Validation occurs at runtime.
 }
 ?>
